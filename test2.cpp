@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS  
 
-#include<iostream>
-using namespace std;
+//#include<iostream>
+//using namespace std;
 
 //
 //
@@ -46,7 +46,11 @@ using namespace std;
 //#define ADD(a,b) a+b
 //#define ADD(a,b) a+b;
 //#define ADD(a,b) (a+b)
-#define ADD(a,b) ((a)+(b))
+//#define ADD(a,b) ((a)+(b))
+
+#include<iostream>
+#include"源.h"
+using namespace std;
 
 int main()
 {
@@ -61,10 +65,12 @@ int main()
 	//int ret2 = ADD(x|y,x&y); //(x|y + x&y); 此处的+优先级最高，| 和 &的优先级次之;
 
     //#define ADD(a,b) ((a)+(b))
-	int x = 1, y = 2;
-	int ret3 = ADD(x|y, x&y);// ((1|2)+(1&2));
+	//int x = 1, y = 2;
+	//int ret3 = ADD(x|y, x&y);// ((1|2)+(1&2));
 
-	cout << ret3 << endl;
+	//cout << ret3 << endl;
+
+	f(1);
 
 
 	return 0;
