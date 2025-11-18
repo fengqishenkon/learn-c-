@@ -51,6 +51,17 @@ void test_string2()
 		s1[i]++;
 	}
 	cout << s1 << endl;
+
+	//迭代器   是一个像指针的东西
+	//s1的每个字符都--
+	string::iterator it1 = s1.begin();  //begin()字符串开始的位置
+	while (it1 != s1.end())             //end()字符串结尾的下一个位置
+	{
+		(*it1)--;//迭代器里面的值++
+
+		++it1;//迭代器本身向前走
+	}
+	cout << s1 << endl;
 }
 
 
