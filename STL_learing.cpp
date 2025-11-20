@@ -1,6 +1,9 @@
 #define _CRT_SECURE_NO_WARNINGS 
 #include<string>
 #include<iostream>
+#include<vector>
+#include<list>
+#include<algorithm>
 using namespace std;
 
 
@@ -44,6 +47,7 @@ void test_string2()
 {
 	string s1("hello world");
 	const string s2("hello world");
+	//下标+[] （非主流方式的遍历+修改方式）
 	//s1[0]++;
 	//cout << s1 << endl;
 	for (int i = 0; i < s1.size(); i++)//s1.size() == s1.length();
@@ -52,16 +56,106 @@ void test_string2()
 	}
 	cout << s1 << endl;
 
-	//迭代器   是一个像指针的东西
+	//迭代器（所有容器主流遍历+修改的方式）   是一个像指针的东西 
 	//s1的每个字符都--
 	string::iterator it1 = s1.begin();  //begin()字符串开始的位置
 	while (it1 != s1.end())             //end()字符串结尾的下一个位置
 	{
-		(*it1)--;//迭代器里面的值++
+		(*it1)--;//迭代器里面的值 ++
 
 		++it1;//迭代器本身向前走
 	}
 	cout << s1 << endl;
+
+	vector<int> v;
+	v.push_back(1);
+	v.push_back(2);
+	v.push_back(3);
+
+	vector<int>::iterator it2 = v.begin();
+	while (it2 != v.end())
+	{
+		cout << *it2 << " ";
+		++it2;
+	}
+	cout << endl;
+
+	list<double> l;
+	l.push_back(1.2);
+	l.push_back(2.3);
+	l.push_back(3.4);	
+	list<double>::iterator it3 = l.begin();
+	while (it3 != l.end())
+	{
+		cout << *it3 << " ";
+		++it3;
+	}
+	cout << endl;
+
+	//using reverse //反向迭代器  支持从后向前遍历
+
+	//迭代器的意义：
+	//1、统一类似的方法遍历和修改容器
+	//2、算法脱离具体底层结构，和底层结构解耦
+	//3、算法独立模板、针对多个容器均可使用
+	//reverse(s1.begin(), s1.end());
+	reverse(v.begin(), v.end());
+	reverse(l.begin(), l.end());
+
+
+	//范围for （c++11标准）  
+	// 
+	//auto自动推导类型
+	auto x = 3;//推导x是int类
+	auto y = 1.12;//推导y是double类
+	cout << x << endl;
+	cout << y << endl;
+	
+
+	/*int& z = x;
+	auto c = z; //此处是拷贝 c++;后z值不变
+	c++;*/  
+
+	int& z = x;
+	auto& c = z;  //此处才是引用
+	c++;
+
+
+	//两者都可
+	auto p1 = x;
+	auto p2 = &x;
+	//只能传指针	
+	auto* p3 = &x;
+
+
+	//自动取容器数据(s1的数据)赋值给e
+	//自动判断结束
+	//自动迭代
+	for (auto e : s1)
+	{
+		cout << e << " ";
+	}
+	cout << endl;
+
+	for (auto& e : s1)
+	{
+		++e;
+	}
+	cout << endl;
+	//auto e : s1 其本质是  auto e = *(迭代器)；所以要修改的话需要加引用 auto& e
+
+
+	for (auto e : s1)
+	{
+		cout << e << " ";
+	}
+	cout << endl;
+
+	/*for (auto& e : s1)
+	{
+		cout << ++e << " ";
+	}
+	cout << endl;*/
 }
 
 
