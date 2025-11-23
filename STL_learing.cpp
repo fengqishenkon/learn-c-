@@ -157,12 +157,34 @@ void test_string2()
 	}
 	cout << endl;*/
 }
+void test_string3()
+{
+	string s1("123456");
+	string s2("hello world");
+	string::iterator it1 = s1.begin();
+	while (it1 != s1.end())
+	{
+		(*it1)--;
+		++it1;
+	}
+	cout << s1 << endl;
+
+	string::const_iterator it2 = s2.begin();//const_iterator 修饰的迭代器之乡的数据不能修改
+	while (it2 != s2.end())
+	{
+		//(*it2)--;//指向的数据本身不能修改
+		++it2;    //但指针本身可以修改
+	}
+
+}
 
 
 int main()
 {
 	
 	test_string2();
+	test_string3();
+
 
 	return 0;
 }
