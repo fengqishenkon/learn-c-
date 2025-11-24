@@ -169,12 +169,32 @@ void test_string3()
 	}
 	cout << s1 << endl;
 
-	string::const_iterator it2 = s2.begin();//const_iterator 修饰的迭代器之乡的数据不能修改
+	string::const_iterator it2 = s2.begin();//const_iterator 修饰的迭代器指向的数据不能修改
 	while (it2 != s2.end())
 	{
 		//(*it2)--;//指向的数据本身不能修改
 		++it2;    //但指针本身可以修改
 	}
+
+	//反向迭代器
+	string::reverse_iterator it3 = s1.rbegin();//rbegin()是指向数组结尾的最后一个字符及/0之前的字符
+	while (it3 != s1.rend())//rend()是指向数组开始的前一个字符。反向迭代器是从后面往前面开始迭代器的。
+	{
+		cout << *it3 << " ";
+		++it3;
+	}
+	cout << endl;
+
+	string::const_reverse_iterator it4 = s2.rbegin();
+	while (it4 != s2.rend())
+	{
+		(*it4)++;//const修饰的迭代器，不能修改。
+		cout << *it4 << " ";
+		++it4;
+	}
+
+	
+
 
 }
 
