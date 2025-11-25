@@ -188,7 +188,7 @@ void test_string3()
 	string::const_reverse_iterator it4 = s2.rbegin();
 	while (it4 != s2.rend())
 	{
-		(*it4)++;//const修饰的迭代器，不能修改。
+		(*it4)++;//const修饰的迭代器，不能修改
 		cout << *it4 << " ";
 		++it4;
 	}
