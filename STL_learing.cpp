@@ -151,11 +151,11 @@ void test_string2()
 	}
 	cout << endl;
 
-	/*for (auto& e : s1)
+	for (auto& e : s1)
 	{
 		cout << ++e << " ";
 	}
-	cout << endl;*/
+	cout << endl;
 }
 void test_string3()
 {
