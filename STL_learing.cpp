@@ -188,7 +188,7 @@ void test_string3()
 	string::const_reverse_iterator it4 = s2.rbegin();
 	while (it4 != s2.rend())
 	{
-		(*it4)++;//const修饰的迭代器，不能修改
+		//(*it4)++;//const修饰的迭代器，不能修改
 		cout << *it4 << " ";
 		++it4;
 	}
@@ -198,12 +198,19 @@ void test_string3()
 
 }
 
+void test_string4()
+{
+	string s1("123456");
+	cout << s1.max_size() << endl;
+	cout << s1.capacity() << endl;
+}
 
 int main()
 {
 	
-	test_string2();
-	test_string3();
+	//test_string2();
+	//test_string3();
+	test_string4();
 
 
 	return 0;
