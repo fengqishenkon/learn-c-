@@ -202,7 +202,27 @@ void test_string4()
 {
 	string s1("123456");
 	cout << s1.max_size() << endl;
+
+	//大小均不包含\0
 	cout << s1.capacity() << endl;
+	cout << s1.size() << endl;
+
+
+
+	//capacity在内存中的扩容方式
+	string s2;
+	size_t old = s2.capacity();
+	cout << "old:" << old << endl;
+	for (int i = 0; i < 100; i++)
+	{
+		s2.push_back('x');
+		if (old != s2.capacity())
+		{
+			cout << "s2.capacity:" << s2.capacity()<<endl;
+			old = s2.capacity();
+		}
+	}
+
 }
 
 int main()
