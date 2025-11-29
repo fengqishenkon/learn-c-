@@ -222,7 +222,10 @@ void test_string4()
 			old = s2.capacity();
 		}
 	}
-
+	
+	cout << s1 << endl;
+	s1.clear();
+	cout << s1 << endl;
 }
 
 int main()
