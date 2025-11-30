@@ -226,6 +226,17 @@ void test_string4()
 	cout << s1 << endl;
 	s1.clear();
 	cout << s1 << endl;
+
+
+	//clear  不会缩容，只会把里面的数据删掉
+	cout << "size:" << s2.size() << endl;
+	cout << "capacity:" << s2.capacity() << endl;
+
+	s2.clear();
+
+	cout << "size:" << s2.size() << endl;
+	cout << "capacity:" << s2.capacity() << endl;
+
 }
 
 int main()
