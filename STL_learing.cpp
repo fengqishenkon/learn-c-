@@ -228,12 +228,18 @@ void test_string4()
 	cout << s1 << endl;
 
 
-	//clear  不会缩容，只会把里面的数据删掉
+	//clear  不会缩容，只会把里面的数据删掉,缩容要重新开空间，代价很大 
 	cout << "size:" << s2.size() << endl;
 	cout << "capacity:" << s2.capacity() << endl;
 
-	s2.clear();
+	//s2.clear();
 
+	for (size_t i = 0; i < 50; i++)
+	{
+		s2.pop_back();
+	}
+
+	s2.shrink_to_fit();//缩容，但缩容后的值>=size的大小
 	cout << "size:" << s2.size() << endl;
 	cout << "capacity:" << s2.capacity() << endl;
 
