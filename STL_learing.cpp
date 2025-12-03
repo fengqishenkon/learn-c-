@@ -232,12 +232,12 @@ void test_string4()
 	cout << "size:" << s2.size() << endl;
 	cout << "capacity:" << s2.capacity() << endl;
 
-	//s2.clear();
+	s2.clear();
 
-	//for (size_t i = 0; i < 50; i++)
-	//{
-	//	s2.pop_back();
-	//}
+	for (size_t i = 0; i < 50; i++)
+	{
+		s2.pop_back();
+	}
 
 	s2.shrink_to_fit();//缩容，但缩容后的值>=size的大小
 	cout << "size:" << s2.size() << endl;
