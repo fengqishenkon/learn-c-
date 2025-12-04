@@ -239,9 +239,9 @@ void test_string4()
 		s2.pop_back();
 	}
 
-	s2.shrink_to_fit();//缩容，但缩容后的值>=size的大小
-	cout << "size:" << s2.size() << endl;
-	cout << "capacity:" << s2.capacity() << endl;
+	//s2.shrink_to_fit();//缩容，但缩容后的值>=size的大小
+	//cout << "size:" << s2.size() << endl;
+	//cout << "capacity:" << s2.capacity() << endl;
 
 }
 
