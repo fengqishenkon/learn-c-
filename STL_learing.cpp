@@ -251,6 +251,8 @@ void test_string5()
 	cout << "size:" << s1.size() << endl;
 	cout << "capacity:" << s1.capacity() << endl;
 
+	//reserve接口 用于确定知道多少空间，提前开好，避免扩容，提高效率
+	//为s1扩容100大小的空间 
 	s1.reserve(100);
 	cout << "size:" << s1.size() << endl;
 	cout << "capacity:" << s1.capacity() << endl;
