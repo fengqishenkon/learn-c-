@@ -265,9 +265,9 @@ void test_string5()
 int main()
 {
 	
-	//test_string2();
-	//test_string3();
-	//test_string4();
+	test_string2();
+	test_string3();
+	test_string4();
 	test_string5();
 
 
