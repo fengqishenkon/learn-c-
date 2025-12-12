@@ -256,7 +256,7 @@ void test_string5()
 	//为s1扩容100大小的空间 
 	s1.reserve(100);
 	cout << "size:" << s1.size() << endl;
-	cout << "capacity:" << s1.capacity() << endl;
+	//cout << "capacity:" << s1.capacity() << endl;
 
 
 }
@@ -265,10 +265,10 @@ void test_string5()
 int main()
 {
 	
-	/*test_string2();
+	test_string2();
 	test_string3();
 	test_string4();
-	test_string5();*/
+	test_string5();
 
 
 	return 0;
