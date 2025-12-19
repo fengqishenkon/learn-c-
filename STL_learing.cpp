@@ -157,6 +157,7 @@ void test_string2()
 	}
 	cout << endl;
 }
+
 void test_string3()
 {
 	string s1("123456");
@@ -261,15 +262,82 @@ void test_string5()
 
 }
 
+void test_string6()
+{
+	//insert要谨慎使用，因为底层涉及到数据的挪动，效率低下，O(n);
+	/*string s2("hello world");
+	s2.insert(0, "yyy");
+	cout << s2 << endl;
+
+	s2.insert(0, 1, '!');
+	cout << s2 << endl;
+
+	s2.insert(s2.begin(), '!');
+	cout << s2 << endl;*/
+
+	
+	//erase要谨慎使用，因为底层涉及到数据的挪动，效率低下，O(n);
+	string s3("hello world");
+	s3.erase(5, 1);
+	cout << s3 << endl;
+
+	s3.erase(5, 2);
+	cout << s3 << endl;
+
+	s3.erase(2);
+	cout << s3 << endl;
+
+
+
+	//replace要谨慎使用，因为底层涉及到数据的挪动，效率低下，O(n);
+	string s4("hello   world");
+	cout << s4 << endl;
+
+	s4.replace(5, 1, "#");
+	cout << s4 << endl;
+	
+	s4.replace(5, 3, "#");
+	cout << s4 << endl;
+
+	s4.replace(5, 1,"!!!!!");
+	cout << s4 << endl; 
+
+	//空格替换成%%
+	string s5("hello world hello");
+	size_t pos = s5.find(' ');
+	while (pos != string::npos)
+	{
+		s5.replace(pos, 1,"%%");
+		pos = s5.find(' ');
+	}
+	cout << s5 << endl;
+
+	//空间换时间做法
+	string s6;
+	s6.reserve(s5.size());
+	for (auto ch : s5)
+	{
+		if (ch == ' ')
+		{
+			s6 += "%%";
+		}
+		else
+		{
+			s6 += ch;
+		}
+	}
+	cout << s6 << endl;
+}
 
 int main()
 {
 	
-	test_string2();
+	/*test_string2();
 	test_string3();
 	test_string4();
-	test_string5();
+	test_string5();*/
 
+	test_string6();
 
 	return 0;
 }
