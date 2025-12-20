@@ -329,6 +329,16 @@ void test_string6()
 	cout << s6 << endl;
 }
 
+void test_string7()
+{
+	string filename("test.cpp");
+	FILE* fout = fopen(filename.c_str(), "r");
+	if (fout == nullptr)
+	{
+		cout << "fopen error" << endl;
+	}
+}
+
 int main()
 {
 	
@@ -338,6 +348,8 @@ int main()
 	test_string5();*/
 
 	test_string6();
+	test_string7();
+
 
 	return 0;
 }
