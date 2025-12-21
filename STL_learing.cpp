@@ -339,6 +339,31 @@ void test_string7()
 	}
 }
 
+void test_string8()
+{
+	//vector存放内置数据类型
+	vector<int> v;
+
+	//向容器中插入数据
+	v.push_back(10);
+	v.push_back(20);
+	v.push_back(30);
+	v.push_back(40);
+
+
+	//通过迭代器访问容器中的数据类型  类似于指针
+	vector<int>::iterator itBegin = v.begin();//起始迭代器  指向容器中第一个元素的位置
+	vector<int>::iterator itEnd = v.end(); //结束迭代器，指向容器中最后一个元素的下一个位置
+
+	//第一种遍历方式
+	while (itBegin != itEnd)
+	{
+		cout << *itBegin << endl;
+		itBegin++;
+	}
+	 
+}
+
 int main()
 {
 	
@@ -347,8 +372,9 @@ int main()
 	test_string4();
 	test_string5();*/
 
-	test_string6();
-	test_string7();
+	/*test_string6();
+	test_string7();*/
+	test_string8();
 
 
 	return 0;
