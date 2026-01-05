@@ -17,8 +17,9 @@ namespace lzq
 	{
 		_capacity=_size;
 		_str=new char[_size+ 1];
-		strcpy(_str, str);
+		strcpy(_str, str);//将源指针指向的C字符串复制到目标指针指向的数组中，包括终止空字符（并在此处停止）。
 	}
+
 
 	string::~string()
 	{
@@ -33,6 +34,16 @@ namespace lzq
 	}
 
 	string::iterator string:: end()
+	{
+		return _str + _size;
+	}
+
+	string::const_iterator string:: begin() const
+	{
+		return _str;
+	}
+
+	string::const_iterator string ::end() const
 	{
 		return _str + _size;
 	}

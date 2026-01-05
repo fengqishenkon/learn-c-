@@ -8,9 +8,16 @@ namespace lzq
 	{
 	public:
 
+
+		//指向对象可以修改的迭代器 
 		typedef char* iterator;
 		iterator begin();
 		iterator end();
+
+		//指向对象不能修改的迭代器
+		typedef const char* const_iterator;
+		const_iterator  begin() const;
+		const_iterator end() const;
 
 
 		//string();
@@ -22,6 +29,7 @@ namespace lzq
 		size_t size() const;//size()函数，用来计算字符串的实际大小
 		char& operator[](size_t i);//operator是重载[]运算符，用来访问字符串中指定位置字符。传入下标i，返回对应位置字符，
 		const char& operator[](size_t i) const;//非const版本返回char&可修改，const版本返回const char&只能读取 。
+
 
 	private:
 		char* _str;//数组存放的位置的地址（杯子本身）

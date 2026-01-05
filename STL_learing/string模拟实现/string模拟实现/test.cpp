@@ -22,6 +22,7 @@ namespace lzq
 		{
 			std::cout << ch << "PP";
 		}
+
 		std::cout << std::endl;
 
 		string::iterator it1 = s1.begin();
@@ -32,11 +33,31 @@ namespace lzq
 		}
 		std::cout << std::endl;
 	}
+
+
+	void test_string2()
+	{
+		const string s1("hello world");
+		string::const_iterator it1 = s1.begin();
+		while (it1 != s1.end())
+		{
+			std::cout << *it1 << " ";
+			++it1;
+		}
+
+
+		std::cout << std::endl;
+
+	}
+
 }
 
 int main()
 {
-	lzq::test_string1();	
+	//lzq::test_string1();	
+	lzq::test_string2();
+	//std::cout << typeid(lzq::string::iterator).name() << std::endl;
+	//std::cout << typeid(std::string::iterator).name() << std::endl;//vs里面的iterator是一个类，具体比价复杂。不是所有的iterator的实现都是指针
 	return 0;
 }
 
