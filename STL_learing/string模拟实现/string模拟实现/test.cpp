@@ -15,6 +15,7 @@ namespace lzq
 		{
 			s2[i]++;
 		}
+
 		//std::cout<<s2
 		std::cout << s2.c_str() << std::endl;
 

@@ -30,6 +30,8 @@ namespace lzq
 		char& operator[](size_t i);//operator是重载[]运算符，用来访问字符串中指定位置字符。传入下标i，返回对应位置字符，
 		const char& operator[](size_t i) const;//非const版本返回char&可修改，const版本返回const char&只能读取 。
 
+		void push_back(char h);
+		void append(const char* str);
 
 	private:
 		char* _str;//数组存放的位置的地址（杯子本身）
