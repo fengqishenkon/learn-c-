@@ -71,13 +71,6 @@ namespace lzq
 		return _str;
 	}
 
-	void push_back(char h)
-	{
 
-	}
-	void append(const char* str)
-	{
-
-	}
 }
 

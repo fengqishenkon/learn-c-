@@ -21,7 +21,7 @@ namespace lzq
 
 
 		//string();
-		string(const char* str="");//构造
+		string(const char* str="");//构造	
 		const char* c_str() const ;//目的是让c++的输出流可以理解
 		~string(); //析构
 
