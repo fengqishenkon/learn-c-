@@ -32,6 +32,7 @@ namespace lzq
 
 		void push_back(char h);
 		void append(const char* str);
+		void reserve(size_t n);
 
 	private:
 		char* _str;//数组存放的位置的地址（杯子本身）

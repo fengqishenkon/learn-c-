@@ -13,7 +13,7 @@ namespace lzq
 
 
 	string::string(const char* str) 
-		:_size(strlen(str))
+		:_size(strlen(str))//长度不包括\0
 	{
 		_capacity=_size;
 		_str=new char[_size+ 1];
@@ -71,6 +71,35 @@ namespace lzq
 		return _str;
 	}
 
+	void string::reserve(size_t n)
+	{
+		if (n > _capacity)
+		{
+			char* str = new char[n + 1];
+			strcpy(str,_str);
+			delete[]_str;
+			_str = str;
+			_capacity = n;
+		}
+	}
+
+
+	void string::push_back(char ch)
+	{
+		if (_size >= _capacity)
+		{
+			size_t newcapacity = _capacity == 0 ? 4 : 2 * _capacity;
+			reserve(newcapacity);
+		}
+		_str[_size] = ch;
+		++_size;
+		_str[_size]='\0';
+	}
+
+	void append(const char* str)
+	{
+
+	}
 
 }
 

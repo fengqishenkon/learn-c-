@@ -38,16 +38,18 @@ namespace lzq
 
 	void test_string2()
 	{
-		const string s1("hello world");
-		string::const_iterator it1 = s1.begin();
+		string s1("hello world");
+		/*string::const_iterator it1 = s1.begin();
 		while (it1 != s1.end())
 		{
 			std::cout << *it1 << " ";
 			++it1;
 		}
-
-
-		std::cout << std::endl;
+		std::cout << std::endl;*/
+		s1.push_back('y');
+		std::cout << s1.size() << std::endl;
+		std::cout << s1.size() << std::endl;
+		std::cout <<s1.c_str()<< std::endl;
 
 	}
 
