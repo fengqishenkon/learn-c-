@@ -35,7 +35,6 @@ namespace lzq
 		std::cout << std::endl;
 	}
 
-
 	void test_string2()
 	{
 		string s1("hello world");
@@ -46,14 +45,17 @@ namespace lzq
 			++it1;
 		}
 		std::cout << std::endl;*/
-		s1.push_back('y');
+		/*s1.push_back('y');
 		std::cout << s1.size() << std::endl;
 		std::cout << s1.size() << std::endl;
-		std::cout <<s1.c_str()<< std::endl;
+		std::cout <<s1.c_str()<< std::endl;*/
 
+		s1.append("yyyyyy");
+		std::cout << s1.c_str()<< std::endl;
 	}
-
 }
+
+
 
 int main()
 {

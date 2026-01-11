@@ -27,7 +27,7 @@ namespace lzq
 		_capacity = 0;
 		_size = 0;
 	}
-
+	 
 	string::iterator string::begin()
 	{
 		return _str;
@@ -96,10 +96,19 @@ namespace lzq
 		_str[_size]='\0';
 	}
 
-	void append(const char* str)
+	void string::append(const char* str)
 	{
-
+		size_t len = strlen(str);
+		if (_size + len > _capacity)
+		{
+			size_t newcapacity = _size + len < 2 * _capacity ? 2 * _capacity : _size + len;
+			reserve(newcapacity);
+			//strcat(_str+len, str);
+			strcpy(_str + _size, str);
+			_size += len;
+		}
 	}
+
 
 }
 
