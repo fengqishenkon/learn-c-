@@ -1,5 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS 
-#include<iostream>
+//#include<iostream>
 #include"string.h"
 namespace lzq
 {
@@ -51,7 +51,24 @@ namespace lzq
 		std::cout <<s1.c_str()<< std::endl;*/
 
 		s1.append("yyyyyy");
-		std::cout << s1.c_str()<< std::endl;
+		//std::cout << s1.c_str()<< std::endl;
+		
+
+		s1+="sss";
+		std::cout << s1.c_str() << std::endl;
+
+		s1 += 'z';
+		std::cout << s1.c_str() << std::endl;
+
+		s1 += 'h';
+
+		s1 += '\0';
+		s1 += '\0';
+		s1 += '!';
+		s1 += "yyyyyyyyyyyyyyyyyyyyyyyyyyy";
+		cout << s1 << endl;
+		cout << s1.c_str() << endl;
+
 	}
 }
 

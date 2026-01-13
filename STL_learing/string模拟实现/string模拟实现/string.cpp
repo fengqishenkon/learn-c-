@@ -66,17 +66,22 @@ namespace lzq
 		return _str[i];
 	}
 
+
+
 	const char* string::c_str() const
 	{
 		return _str;
 	}
+
+
 
 	void string::reserve(size_t n)
 	{
 		if (n > _capacity)
 		{
 			char* str = new char[n + 1];
-			strcpy(str,_str);
+			//strcpy(str,_str);
+			memcpy(str, _str, _size + 1);
 			delete[]_str;
 			_str = str;
 			_capacity = n;
@@ -96,6 +101,7 @@ namespace lzq
 		_str[_size]='\0';
 	}
 
+
 	void string::append(const char* str)
 	{
 		size_t len = strlen(str);
@@ -104,11 +110,33 @@ namespace lzq
 			size_t newcapacity = _size + len < 2 * _capacity ? 2 * _capacity : _size + len;
 			reserve(newcapacity);
 			//strcat(_str+len, str);
-			strcpy(_str + _size, str);
-			_size += len;
 		}
+		strcpy(_str + _size, str);
+		_size += len;
+	}
+
+	string& string::operator+=(char ch)
+	{
+		push_back(ch);
+		return *this;
 	}
 
 
+
+	string& string::operator+=(const char* str)
+	{
+		append(str);
+		return *this;
+	} 
+
+	ostream& operator<<(ostream& out, const string& s)
+	{
+
+		for (auto i : s)
+		{
+			out << i;
+		}
+		return out;
+	}
 }
 
