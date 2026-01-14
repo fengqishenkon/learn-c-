@@ -38,9 +38,13 @@ namespace lzq
 
 
 
+
 		void push_back(char h);//在字符串末尾加上一个字符
 		void append(const char* str);//在字符串末尾加上一个另外一个字符串 
 		void reserve(size_t n);//把容量扩大到n
+
+		void insert(size_t pos, char c);
+		void insert(size_t pos, const char* str);
 
 
 	private:

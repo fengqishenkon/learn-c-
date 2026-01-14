@@ -37,7 +37,7 @@ namespace lzq
 
 	void test_string2()
 	{
-		string s1("hello world");
+		std::string s1("hello world");
 		/*string::const_iterator it1 = s1.begin();
 		while (it1 != s1.end())
 		{
@@ -70,6 +70,22 @@ namespace lzq
 		cout << s1.c_str() << endl;
 
 	}
+
+	void test_string3()
+	{
+		string s1 = "hello world";
+		s1.insert(1, 'a');
+		cout << s1 << endl;
+
+		string s2 = "hello world";
+
+		
+		s2.insert(11, "xxx");
+		cout << s2 << endl;
+
+		
+	}
+
 }
 
 
@@ -77,9 +93,11 @@ namespace lzq
 int main()
 {
 	//lzq::test_string1();	
-	lzq::test_string2();
+	//lzq::test_string2();
 	//std::cout << typeid(lzq::string::iterator).name() << std::endl;
 	//std::cout << typeid(std::string::iterator).name() << std::endl;//vs里面的iterator是一个类，具体比价复杂。不是所有的iterator的实现都是指针
+	lzq::test_string3();
+
 	return 0;
 }
 
