@@ -19,7 +19,6 @@ namespace lzq
 		_str=new char[_size+ 1];
 		//strcpy(_str, str);//将源指针指向的C字符串复制到目标指针指向的数组中，包括终止空字符（并在此处停止）。
 		memcpy(_str, str, _size+ 1);
-
 	}
 
 
@@ -142,7 +141,7 @@ namespace lzq
 		return out;
 	}
 
-	void string::insert(size_t pos, char c)
+	string& string::insert(size_t pos, char c)
 	{
 		assert(pos <= _size);
 		if (_size >= _capacity)
@@ -159,10 +158,13 @@ namespace lzq
 		}
 		_str[pos] = c;
 		++_size;
+		return *this;
 	}
 
-	void string::insert(size_t pos, const char* str)
+	string& string::insert(size_t pos, const char* str)
 	{
+		assert(pos <= _size);
+
 		size_t len = strlen(str);
 		if (_size + len > _capacity)
 		{
@@ -170,16 +172,15 @@ namespace lzq
    			reserve(newcapacity);
 		}
 
-
 		size_t end =len+_size;
 		int size =_size;
+		
 		while (size>=(int)pos) 
 		{
 			_str[end]=_str[size];    
 			--end;
 			--size;
 		}
-
 
 		int a = len - 1;
 		while (a>=0)
@@ -191,7 +192,33 @@ namespace lzq
 			--a;
 		}
 		_size += strlen(str); 
+		return *this;
 	}
+
+	 const size_t string::npos = -1;
+
+	 string& string::erase(size_t pos, size_t len)
+	 {
+		 assert(pos <_size);
+		 if (len == npos || len >= _size - pos)
+		 {
+			 _size = pos;
+			 _str[pos] = '\0';
+		 }
+		 else
+		 {
+			 memmove(_str+pos,_str+pos+len,_size+1-pos-len);
+			 _size -= len;
+		 }
+		 return *this;
+	 }
+
+	 void string::pop_back()
+	 {
+		 assert(_size > 0);
+		 --_size;
+		 _str[_size] = '\0';
+	 }
 
 }
 

@@ -36,16 +36,15 @@ namespace lzq
 		string& operator+=(const char* str ) ;//只能读
 		
 
-
-
-
 		void push_back(char h);//在字符串末尾加上一个字符
 		void append(const char* str);//在字符串末尾加上一个另外一个字符串 
 		void reserve(size_t n);//把容量扩大到n
 
-		void insert(size_t pos, char c);
-		void insert(size_t pos, const char* str);
-
+		string& insert(size_t pos, char c);
+		string& insert(size_t pos, const char* str);
+		static const size_t npos;
+		string& erase(size_t pos = 0, size_t len = npos);
+		void pop_back();
 
 	private:
 		char* _str;//数组存放的位置的地址（杯子本身）

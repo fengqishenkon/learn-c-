@@ -73,7 +73,7 @@ namespace lzq
 
 	void test_string3()
 	{
-		string s1 = "hello world";
+		/*string s1 = "hello world";
 		s1.insert(1, 'a');
 		cout << s1 << endl;
 
@@ -83,7 +83,25 @@ namespace lzq
 		s2.insert(11, "xxx");
 		cout << s2 << endl;
 
-		
+		s2.erase(7);
+
+		*/
+
+		string s3 = "hello world";
+		s3.erase(7);
+		//cout << s3 << endl;
+
+		string s4 = "hello world";
+		s4.erase(7, 3);
+		//cout << s4 << endl;
+
+		string s5 = "hello world";
+		s5.pop_back();
+		cout << s5 << endl;
+
+		/*string s6;
+		s6.pop_back();*/
+
 	}
 
 }
