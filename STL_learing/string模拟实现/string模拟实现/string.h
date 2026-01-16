@@ -23,9 +23,11 @@ namespace lzq
 
 
 		//string();
-		string(const char* str="");//构造	
-		const char* c_str() const ;//目的是让c++的输出流可以理解
+		string(const char* str = "");//构造	
+		const char* c_str() const;//目的是让c++的输出流可以理解
 		~string(); //析构
+
+		string(const string& s);//拷贝构造
 
 
 		size_t size() const;//size()函数，用来计算字符串的实际大小
@@ -33,8 +35,8 @@ namespace lzq
 		char& operator[](size_t i);//operator是重载[]运算符，用来访问字符串中指定位置字符。传入下标i，返回对应位置字符，
 		const char& operator[](size_t i) const;//非const版本返回char&可修改，const版本返回const char&只能读取 。
 		string& operator+=(char ch);//重载+=
-		string& operator+=(const char* str ) ;//只能读
-		
+		string& operator+=(const char* str);//只能读
+
 
 		void push_back(char h);//在字符串末尾加上一个字符
 		void append(const char* str);//在字符串末尾加上一个另外一个字符串 
@@ -45,6 +47,19 @@ namespace lzq
 		static const size_t npos;
 		string& erase(size_t pos = 0, size_t len = npos);
 		void pop_back();
+		size_t find(char c, size_t pos = 0) const;
+		size_t find(const char* s, size_t pos = 0) const;
+
+		string substr(size_t pos, size_t len = npos) const;
+
+		bool operator<(const string& s) const;
+		bool operator<=(const string& s) const;
+		bool operator>(const string& s) const;
+		bool operator>=(const string& s) const;
+		bool operator==(const string& s) const;
+		bool operator!=(const string& s) const;
+
+
 
 	private:
 		char* _str;//数组存放的位置的地址（杯子本身）

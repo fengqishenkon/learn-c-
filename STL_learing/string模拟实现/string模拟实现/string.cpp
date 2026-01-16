@@ -29,6 +29,15 @@ namespace lzq
 		_size = 0;
 	}
 	 
+     string::string(const string& s)//øΩ±¥ππ‘Ï
+	{
+		 _str = new char[s._capacity + 1];
+		 memcpy(_str,s._str,s._size+1);
+		 _size = s._size;
+		 _capacity = s._capacity;
+	}
+
+
 	string::iterator string::begin()
 	{
 		return _str;
@@ -219,6 +228,98 @@ namespace lzq
 		 --_size;
 		 _str[_size] = '\0';
 	 }
+
+
+	 size_t string::find(char c, size_t pos) const
+	 {
+		 for (size_t i = pos; i <= _size; i++)
+		 {
+			 if (_str[i] == c)
+			 {
+				 return i;
+			 }
+		 }
+		 return npos;
+	 }
+
+
+	 size_t string::find(const char* s, size_t pos) const
+	 {
+		 const char* p1 = strstr(_str+pos,s);
+		 if (p1 == nullptr)
+		 {
+			 return npos;
+		 }
+		 else
+		 {
+			 return p1 - _str;
+		 }
+	 }
+
+	 string string::substr(size_t pos, size_t len) const
+	 {
+		 if (len == npos || len >= _size - pos)
+		 {
+			 len = _size - pos;
+		 }
+		 string ret;
+		 ret.reserve(len);
+		 for (int i = 0; i <len; i++)
+		 {
+			 ret += _str[pos + i];
+		 }
+		 return ret;
+	 }
+
+	 bool string::operator<(const string& s) const
+	 {
+		 size_t i1=0, i2=0;
+		 while (i1 < _size && i2 < s._size)
+		 {
+			 if (_str[i1] < s._str[i2])
+			 {
+				 return true;
+			 }
+			 else if (_str[i1] > s._str[i2])
+			 {
+				 return false;
+			 }
+			 else
+			 {
+				 ++i1;
+				 ++i2;
+			 }
+			 return i2 < s._size;
+		 }
+
+	 }
+
+	 bool string::operator<=(const string& s) const
+	 {
+
+	 }
+
+	 bool string::operator>(const string& s) const
+	 {
+
+	 }
+
+	 bool string::operator>=(const string& s) const
+	 {
+
+	 }
+
+	 bool string::operator==(const string& s) const
+	 {
+
+	 }
+
+	 bool string::operator!=(const string& s) const
+	 {
+
+	 }
+
+
 
 }
 

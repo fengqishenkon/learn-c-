@@ -68,7 +68,6 @@ namespace lzq
 		s1 += "yyyyyyyyyyyyyyyyyyyyyyyyyyy";
 		cout << s1 << endl;
 		cout << s1.c_str() << endl;
-
 	}
 
 	void test_string3()
@@ -104,6 +103,35 @@ namespace lzq
 
 	}
 
+	void split_url(const string& url)
+	{
+		size_t i1 = url.find(':');
+		if (i1 != string::npos)
+		{
+			cout << url.substr(0, i1) << endl;
+		}
+
+		size_t i2 = i1 + 3;
+		size_t i3 = url.find('/', i2);
+		if (i3 != string::npos)
+		{
+			cout << url.substr(i2, i3 - i2) << endl;
+			cout << url.substr(i3 + 1) << endl;
+		}
+		cout << endl;
+	}
+
+
+	void test_string4() 
+	{
+		string url1 = "https://yuanbao.tencent.com/chat/naQivTmsDa/7cbdacda-ee7f-4870-8414-d54310173f90";
+		string url2 = "https://search.bilibili.com/all?vt=68741374&keyword=c%2B%2B%E6%B5%85%E6%8B%B7%E8%B4%9D%E6%B7%B1%E6%8B%B7%E8%B4%9D&from_source=webtop_search&spm_id_from=333.1007&search_source=5";
+
+		split_url(url1);
+		split_url(url2);
+	}
+
+
 }
 
 
@@ -114,7 +142,9 @@ int main()
 	//lzq::test_string2();
 	//std::cout << typeid(lzq::string::iterator).name() << std::endl;
 	//std::cout << typeid(std::string::iterator).name() << std::endl;//vs里面的iterator是一个类，具体比价复杂。不是所有的iterator的实现都是指针
-	lzq::test_string3();
+	//lzq::test_string3();
+
+	lzq::test_string4();
 
 	return 0;
 }
