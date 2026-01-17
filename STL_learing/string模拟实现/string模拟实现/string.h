@@ -52,6 +52,8 @@ namespace lzq
 
 		string substr(size_t pos, size_t len = npos) const;
 
+
+		//¹ØÏµÔËËã·û  
 		bool operator<(const string& s) const;
 		bool operator<=(const string& s) const;
 		bool operator>(const string& s) const;

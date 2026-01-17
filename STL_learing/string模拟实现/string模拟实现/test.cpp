@@ -132,6 +132,23 @@ namespace lzq
 	}
 
 
+	void test_string5()
+	{
+		string s1("abc");
+		string s2("abc");
+
+		string s3("abcd");
+		string s4("abc");
+
+		string s5("abc");
+		string s6("abcd");
+		
+		cout << (s1 == s2)<<endl;
+		cout << (s3 > s4) << endl;
+		cout << (s5 < s6) << endl;
+
+	}
+
 }
 
 
@@ -143,8 +160,8 @@ int main()
 	//std::cout << typeid(lzq::string::iterator).name() << std::endl;
 	//std::cout << typeid(std::string::iterator).name() << std::endl;//vs里面的iterator是一个类，具体比价复杂。不是所有的iterator的实现都是指针
 	//lzq::test_string3();
-
-	lzq::test_string4();
+	//lzq::test_string4();
+	lzq::test_string5();
 
 	return 0;
 }

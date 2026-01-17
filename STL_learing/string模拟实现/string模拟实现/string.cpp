@@ -289,37 +289,51 @@ namespace lzq
 				 ++i1;
 				 ++i2;
 			 }
-			 return i2 < s._size;
 		 }
+		 return i2 < s._size;
 
 	 }
 
 	 bool string::operator<=(const string& s) const
 	 {
-
+		 return (*this < s || *this == s);
 	 }
 
 	 bool string::operator>(const string& s) const
 	 {
+		 return !(*this<=s);
 
 	 }
 
 	 bool string::operator>=(const string& s) const
 	 {
+		 return !(*this<s);
 
 	 }
 
 	 bool string::operator==(const string& s) const
 	 {
+		 size_t i1 = 0, i2 = 0;
+		 while (i1 < _size && i2 < s._size)
+		 {
+			 if (_str[i1]!=s._str[i2])
+			 {
+				 return false;
+			 }
+			 else
+			 {
+				 ++i1;
+				 ++i2;
+			 }
+		 }
+		 return i1 == _size && i2 == s._size;
 
 	 }
+
 
 	 bool string::operator!=(const string& s) const
 	 {
-
+		 return !(*this == s);
 	 }
-
-
-
 }
 
