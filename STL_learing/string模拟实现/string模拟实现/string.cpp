@@ -140,6 +140,12 @@ namespace lzq
 		return *this;
 	} 
 
+	void string::clear()
+	{
+		_str[0] = '\0';
+		_size = 0;
+	}
+
 	ostream& operator<<(ostream& out, const string& s)
 	{
 
@@ -149,6 +155,19 @@ namespace lzq
 		}
 		return out;
 	}
+
+	istream& operator>>(istream& in, string& s)
+	{
+		s.clear();
+		char ch = in.get();
+		while (ch != ' ' && ch != '\n')
+		{
+			s += ch; 
+			ch = in.get();
+		}
+		return in;
+	}
+
 
 	string& string::insert(size_t pos, char c)
 	{
@@ -315,7 +334,7 @@ namespace lzq
 	 {
 		 size_t i1 = 0, i2 = 0;
 		 while (i1 < _size && i2 < s._size)
-		 {
+		 {   
 			 if (_str[i1]!=s._str[i2])
 			 {
 				 return false;
@@ -326,7 +345,7 @@ namespace lzq
 				 ++i2;
 			 }
 		 }
-		 return i1 == _size && i2 == s._size;
+		 return i1 == _size && i2 == s._size; 
 
 	 }
 
@@ -335,5 +354,6 @@ namespace lzq
 	 {
 		 return !(*this == s);
 	 }
+
 }
 

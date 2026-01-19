@@ -149,6 +149,13 @@ namespace lzq
 
 	}
 
+	void test_string6()
+	{
+		string s1("abc");
+		string s2("123");
+		cin >> s1>>s2;
+		cout << s1 << s2 << endl;
+	}
 }
 
 
@@ -161,7 +168,7 @@ int main()
 	//std::cout << typeid(std::string::iterator).name() << std::endl;//vs里面的iterator是一个类，具体比价复杂。不是所有的iterator的实现都是指针
 	//lzq::test_string3();
 	//lzq::test_string4();
-	lzq::test_string5();
+	lzq::test_string6();
 
 	return 0;
 }

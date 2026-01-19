@@ -10,7 +10,6 @@ namespace lzq
 	{
 	public:
 
-
 		//指向对象可以修改的迭代器 
 		typedef char* iterator;
 		iterator begin();
@@ -38,15 +37,24 @@ namespace lzq
 		string& operator+=(const char* str);//只能读
 
 
-		void push_back(char h);//在字符串末尾加上一个字符
-		void append(const char* str);//在字符串末尾加上一个另外一个字符串 
+		void push_back(char h);//尾插
+		void append(const char* str);//完成string的拼接：
+
+		//reserve规则
+		//1、当n大于对象当前的capacity时，将capacity扩大到n或大于n。
+		//2、当n小于对象当前的capacity时，什么也不做。
+		//注意：此函数对字符串的size没有影响，并且无法更改其内容。
 		void reserve(size_t n);//把容量扩大到n
+
 
 		string& insert(size_t pos, char c);
 		string& insert(size_t pos, const char* str);
 		static const size_t npos;
-		string& erase(size_t pos = 0, size_t len = npos);
-		void pop_back();
+		string& erase(size_t pos = 0, size_t len = npos);//使用erase删除
+		void pop_back(); //使用pop_back进行尾删
+		void clear();//清理数据
+
+		//string的查找
 		size_t find(char c, size_t pos = 0) const;
 		size_t find(const char* s, size_t pos = 0) const;
 
@@ -68,6 +76,7 @@ namespace lzq
 		size_t _size;//杯子实际盛水量
 		size_t _capacity;//杯子的容量
 	};
-
+	 
 	ostream& operator<<(ostream& out, const string& s);
+	istream& operator>>(istream& in, string& s);
 }
