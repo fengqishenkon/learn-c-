@@ -31,6 +31,7 @@ namespace lzq
 	 
      string::string(const string& s)//拷贝构造
 	{
+		 cout << "hhhhhhh" << endl;
 		 _str = new char[s._capacity + 1];
 		 memcpy(_str,s._str,s._size+1);
 		 _size = s._size;
@@ -89,12 +90,14 @@ namespace lzq
 	{
 		if (n > _capacity)
 		{
+			
 			char* str = new char[n + 1];
 			//strcpy(str,_str);
 			memcpy(str, _str, _size + 1);
 			delete[]_str;
 			_str = str;
 			_capacity = n;
+			cout <<"reserve:" << _capacity << endl;
 		}
 	}
 
@@ -140,6 +143,21 @@ namespace lzq
 		return *this;
 	} 
 
+	string& string::operator=(const string& s)
+	{
+		if (this != &s)
+		{
+			char* tmp = new char[s._capacity + 1];
+			memcpy(tmp, s._str, s._size + 1);
+			delete[]_str;
+			_str = tmp;
+			_size = s._size;
+			_capacity = s._capacity;
+		}
+		return *this;
+	}
+
+
 	void string::clear()
 	{
 		_str[0] = '\0';
@@ -159,11 +177,49 @@ namespace lzq
 	istream& operator>>(istream& in, string& s)
 	{
 		s.clear();
+		char buff[128];
+		int i = 0;
 		char ch = in.get();
 		while (ch != ' ' && ch != '\n')
 		{
-			s += ch; 
+			buff[i++] = ch;
+			if (i == 127)
+			{
+				s += buff;
+				i = 0;
+			}
+			//s += ch; 
 			ch = in.get();
+		}
+		if (i > 0)
+		{
+			buff[i] = '\0';
+			s += buff;
+		}
+		return in;
+	}
+	 
+	istream& getline(istream& in, string& s, char delim)
+	{
+		s.clear();
+		char buff[128];
+		int i = 0;
+		char ch = in.get();
+		while (ch != delim)
+		{
+			buff[i++] = ch;//空间换时间
+			if (i == 127)
+			{
+				s += buff;
+				i = 0;
+			}
+			//s += ch; 
+			ch = in.get();
+		}
+		if (i > 0)
+		{
+			buff[i] = '\0';
+			s += buff;
 		}
 		return in;
 	}
@@ -289,6 +345,7 @@ namespace lzq
 		 }
 		 return ret;
 	 }
+
 
 	 bool string::operator<(const string& s) const
 	 {

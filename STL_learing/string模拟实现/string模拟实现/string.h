@@ -35,7 +35,7 @@ namespace lzq
 		const char& operator[](size_t i) const;//非const版本返回char&可修改，const版本返回const char&只能读取 。
 		string& operator+=(char ch);//重载+=
 		string& operator+=(const char* str);//只能读
-
+		string& operator=(const string& s);//复制重载 传统写法
 
 		void push_back(char h);//尾插
 		void append(const char* str);//完成string的拼接：
@@ -79,4 +79,5 @@ namespace lzq
 	 
 	ostream& operator<<(ostream& out, const string& s);
 	istream& operator>>(istream& in, string& s);
+	istream& getline(istream& in, string& s,char delim='\n');
 }

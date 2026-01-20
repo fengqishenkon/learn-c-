@@ -127,7 +127,7 @@ namespace lzq
 		string url1 = "https://yuanbao.tencent.com/chat/naQivTmsDa/7cbdacda-ee7f-4870-8414-d54310173f90";
 		string url2 = "https://search.bilibili.com/all?vt=68741374&keyword=c%2B%2B%E6%B5%85%E6%8B%B7%E8%B4%9D%E6%B7%B1%E6%8B%B7%E8%B4%9D&from_source=webtop_search&spm_id_from=333.1007&search_source=5";
 
-		split_url(url1);
+		//split_url(url1);
 		split_url(url2);
 	}
 
@@ -151,12 +151,25 @@ namespace lzq
 
 	void test_string6()
 	{
-		string s1("abc");
+		string s1("abc fff");
 		string s2("123");
-		cin >> s1>>s2;
-		cout << s1 << s2 << endl;
+		//cin >> s1;
+		//getline(cin, s1);
+		getline(cin, s1);
+
+		cout << s1 << endl;
 	}
+
+	void test_string7()
+	{
+		string s1("abc");
+		string s2("123323232");
+		s1 = s2;
+		cout << s1 << endl;
+	}
+
 }
+
 
 
 
@@ -168,8 +181,8 @@ int main()
 	//std::cout << typeid(std::string::iterator).name() << std::endl;//vs里面的iterator是一个类，具体比价复杂。不是所有的iterator的实现都是指针
 	//lzq::test_string3();
 	//lzq::test_string4();
-	lzq::test_string6();
-
+	//lzq::test_string6();
+	lzq::test_string7();
 	return 0;
 }
 
