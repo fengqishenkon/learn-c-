@@ -164,6 +164,7 @@ namespace lzq
 	{
 		string s1("abc");
 		string s2("123323232");
+		//string s3(s1);
 		s1 = s2;
 		cout << s1 << endl;
 	}
@@ -182,7 +183,18 @@ int main()
 	//lzq::test_string3();
 	//lzq::test_string4();
 	//lzq::test_string6();
-	lzq::test_string7();
+	//lzq::test_string7();
+	//std::string s1("1111");
+	//std::string s2("2222255555");
+	//cout << sizeof(s1) << endl;//28
+	//cout << sizeof(s2) << endl;//28
+
+	int i = 0;
+	cin >> i;
+	
+
+
+
 	return 0;
 }
 

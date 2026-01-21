@@ -29,14 +29,37 @@ namespace lzq
 		_size = 0;
 	}
 	 
-     string::string(const string& s)//拷贝构造
+	void swap(string& s, string& ch)
 	{
-		 cout << "hhhhhhh" << endl;
-		 _str = new char[s._capacity + 1];
-		 memcpy(_str,s._str,s._size+1);
-		 _size = s._size;
-		 _capacity = s._capacity;
+		s.swap(ch);
 	}
+
+
+	//现代写法
+	void string::swap(string& s)//拷贝构造
+	{
+		std::swap(_str, s._str);
+		std::swap(_size, s._size);
+		std::swap(_capacity, s._capacity);
+	}
+
+	
+	string::string(const string& s)
+	{
+		string tmp(s._str);
+		swap(tmp);
+	}
+
+	//
+
+ //    string::string(const string& s)//拷贝构造
+	//{
+	//	 cout << "hhhhhhh" << endl;
+	//	 _str = new char[s._capacity + 1];
+	//	 memcpy(_str,s._str,s._size+1);
+	//	 _size = s._size;
+	//	 _capacity = s._capacity;
+	//}
 
 
 	string::iterator string::begin()
@@ -143,17 +166,11 @@ namespace lzq
 		return *this;
 	} 
 
-	string& string::operator=(const string& s)
+
+
+	string& string::operator=(string tmp)//传值传参要调用拷贝构造
 	{
-		if (this != &s)
-		{
-			char* tmp = new char[s._capacity + 1];
-			memcpy(tmp, s._str, s._size + 1);
-			delete[]_str;
-			_str = tmp;
-			_size = s._size;
-			_capacity = s._capacity;
-		}
+		swap(tmp);
 		return *this;
 	}
 

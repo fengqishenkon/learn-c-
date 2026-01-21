@@ -35,7 +35,7 @@ namespace lzq
 		const char& operator[](size_t i) const;//非const版本返回char&可修改，const版本返回const char&只能读取 。
 		string& operator+=(char ch);//重载+=
 		string& operator+=(const char* str);//只能读
-		string& operator=(const string& s);//复制重载 传统写法
+		string& operator=(string tmp);//复制重载 
 
 		void push_back(char h);//尾插
 		void append(const char* str);//完成string的拼接：
@@ -54,12 +54,15 @@ namespace lzq
 		void pop_back(); //使用pop_back进行尾删
 		void clear();//清理数据
 
+		void swap(string& s);//成员函数 交换
+
 		//string的查找
 		size_t find(char c, size_t pos = 0) const;
 		size_t find(const char* s, size_t pos = 0) const;
 
 		string substr(size_t pos, size_t len = npos) const;
 
+		
 
 		//关系运算符  
 		bool operator<(const string& s) const;
@@ -72,12 +75,15 @@ namespace lzq
 
 
 	private:
-		char* _str;//数组存放的位置的地址（杯子本身）
-		size_t _size;//杯子实际盛水量
-		size_t _capacity;//杯子的容量
+		char* _str =nullptr;//数组存放的位置的地址（杯子本身）
+		size_t _size = 0;//杯子实际盛水量
+		size_t _capacity =0;//杯子的容量
 	};
 	 
 	ostream& operator<<(ostream& out, const string& s);
 	istream& operator>>(istream& in, string& s);
 	istream& getline(istream& in, string& s,char delim='\n');
+
+	void swap(string& s, string& ch);//全局的交换
+
 }
