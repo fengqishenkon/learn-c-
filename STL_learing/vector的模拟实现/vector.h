@@ -1,4 +1,4 @@
-//#define _CRT_SECURE_NO_WARNINGS  
+﻿//#define _CRT_SECURE_NO_WARNINGS  
 #pragma once
 //#include<iostream>
 //#include<vector>
@@ -17,6 +17,25 @@ namespace lzq
 			, _finish(nullptr)
 			, _endofstorage(nullptr)
 		{}
+		
+		//v2(v1)
+		vector(const vector<T>& v)
+		{
+			reserve(v.capacity());
+			for (auto& e : v)
+			{
+				push_back(e);
+			}
+		}
+
+		~vector()
+		{
+			if (_start)
+			{
+				delete[]_start;
+				_start = _finish = _endofstorage=nullptr;
+			}
+		}
 
 		void reserve(size_t n)
 		{
@@ -32,6 +51,24 @@ namespace lzq
 				_start = tmp;
 				_finish = _start + old_size;
 				_endofstorage = _start + n;	
+			}
+		}
+
+
+		void resize(size_t n, T val = T())//内置类型也可以构造   resize函数的目的是改变容器中元素的数量，而不改变容器的容量（除非需要扩容）
+		{
+			if (n > size())
+			{
+				reserve(n);
+				while (_finish != _start + n)
+				{
+					(*_finish) = val;
+					++_finish;
+				}
+			}
+			else
+			{
+				_finish = _start + n;
 			}
 		}
 
@@ -53,6 +90,10 @@ namespace lzq
 		const_iterator end() const
 		{
 			return _finish;
+		}
+		void clear()
+		{
+			_finish=_start;
 		}
 		
 
@@ -93,6 +134,7 @@ namespace lzq
 			++_finish;
 		}
 
+
 		bool empty()
 		{
 			return _start == _finish;
@@ -103,8 +145,8 @@ namespace lzq
 			assert(!empty());
 			--_finish;
 		}
-
-		void insert(iterator p, const T& x)
+		 
+		iterator insert(iterator p, const T& x)
 		{
 			assert(p >= _start);
 			assert(p <=_finish);
@@ -114,6 +156,7 @@ namespace lzq
 				reserve(capacity() == 0 ? 4 : capacity() * 2);
 				p = _start + len;
 			}
+
 			iterator end = _finish - 1;
 		
 			while (end >= p)
@@ -123,17 +166,33 @@ namespace lzq
 			}
 			*p = x;
 			++_finish;
+			return p;
 		}
 
+		iterator erase(iterator p)
+		{
+			assert(p >= _start);
+			assert(p <= _finish);
+			iterator it = p + 1;
+			while (it != _finish)
+			{
+				*(it-1) = *it;
+				++it;
+			}
+			--_finish;
+			return p;
+		}
+
+
 	private:
-		iterator _start;
-		iterator _finish;
-		iterator _endofstorage;
+		iterator _start=nullptr;//指向数组起始位置的迭代器（实际为T*类型）
+		iterator _finish= nullptr;//指向最后⼀个元素的下⼀个位置
+		iterator _endofstorage= nullptr;//指向存储空间末尾
 	};
 }
 
 
-//ģ�� �����Ͷ��岻�ܷ��붨�嵽�����ļ�.h  .cpp
+//模板 声明和定义不能分离定义到两个文件.h  .cpp
 //template<class T>
 //class vector
 //{

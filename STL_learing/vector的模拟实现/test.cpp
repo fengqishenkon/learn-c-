@@ -5,9 +5,15 @@
 #include "vector.h"  
 #include<initializer_list>
 
+//using namespace std;
 using namespace lzq;
 
-void Printf(const vector<int>& v)
+
+// ·ºÐÍ º¯ÊýÄ£°å
+
+//template<class Container>
+template<class T>
+void Printf(const T& v)
 {
 	for (const auto& a : v)
 	{
@@ -18,7 +24,7 @@ void Printf(const vector<int>& v)
 }
 
 void vector_test()
-{	
+{
 	vector<int> v;
 	v.push_back(1);
 	v.push_back(2);
@@ -33,13 +39,48 @@ void vector_test()
 	//v.pop_back();
 
 	v.insert(v.begin(), 17);
+	v.insert(v.begin() + 2, 17);
+
+
+	auto it = std::find(v.begin(), v.end(), 3);
+	if (it != v.end())
+	{
+		v.insert(it, 10);
+
+	}
+
 	Printf(v);
+
 }
 
+
+void vector_test2()
+{
+	vector<int> v;
+	v.push_back(1);
+	v.push_back(2);
+	v.push_back(3);
+	v.push_back(4);
+	v.push_back(5);
+
+	//int i;
+	//std::cin >> i;
+	//auto it = std::find(v.begin(), v.end(), i);
+
+	//v.erase(it);
+
+	v.resize(7);
+	v.resize(20,7);
+
+	Printf(v);
+
+}
 
 int main()
 {
 
-	vector_test();
+	//vector_test();
+	vector_test2();
+
 	return 0;
 }
