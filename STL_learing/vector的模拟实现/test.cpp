@@ -3,7 +3,6 @@
 #include<iostream>
 #include<string>
 #include "vector.h"  
-#include<initializer_list>
 
 //using namespace std;
 using namespace lzq;
@@ -19,7 +18,6 @@ void Printf(const T& v)
 	{
 		std::cout << a <<" ";
 	}
-
      std::cout << std::endl;
 }
 
@@ -57,11 +55,18 @@ void vector_test()
 void vector_test2()
 {
 	vector<int> v;
+	vector<int> v2 = { 1,2,3,4 };
+	vector<int> v3(v2.begin(), v2.end());
+	vector<int>v4(4, 7);
 	v.push_back(1);
 	v.push_back(2);
 	v.push_back(3);
 	v.push_back(4);
 	v.push_back(5);
+
+	v = v2;
+
+	Printf(v);
 
 	//int i;
 	//std::cin >> i;
@@ -72,9 +77,11 @@ void vector_test2()
 	v.resize(7);
 	v.resize(20,7);
 
-	Printf(v);
+	//Printf(v);
 
 }
+
+
 
 int main()
 {

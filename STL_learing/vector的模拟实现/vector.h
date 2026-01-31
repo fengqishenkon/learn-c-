@@ -2,7 +2,10 @@
 #pragma once
 //#include<iostream>
 //#include<vector>
+
 #include<assert.h>
+#include <initializer_list> 
+
 namespace lzq
 {
 	template<class T>
@@ -12,12 +15,20 @@ namespace lzq
 		typedef T* iterator;
 
 		typedef const T* const_iterator;
-		vector()
-			:_start(nullptr)
-			, _finish(nullptr)
-			, _endofstorage(nullptr)
-		{}
+
+		//强制编译器生成默认构造
+		vector() = default;
 		
+
+		vector(std::initializer_list<T> il)
+		{
+			reserve(il.size());
+			for (auto& e : il)
+			{
+				push_back(e);
+			}
+		}
+
 		//v2(v1)
 		vector(const vector<T>& v)
 		{
@@ -27,6 +38,23 @@ namespace lzq
 				push_back(e);
 			}
 		}
+
+		//
+		template<class InputIterator>
+		vector(InputIterator first, InputIterator last)
+		{
+			while (first != last)
+			{
+				push_back(*first);
+				++first;
+			}
+		}
+
+		vector(int n, T val = T())
+		{
+			resize(n, val);
+		}
+
 
 		~vector()
 		{
@@ -101,6 +129,20 @@ namespace lzq
 		{
 			assert(i < size());
 			return _start[i];
+		}
+
+		void swap(vector<T>& v)
+		{
+			std::swap(_finish, v._finish);
+			std::swap(_start, v._start);
+			std::swap(_endofstorage, v._endofstorage);
+		}
+
+		//v1=v7
+		vector<T>& operator=(vector<int>& v)
+		{
+			swap(v);
+			return *this;
 		}
 
 		const T& operator[](size_t i) const
