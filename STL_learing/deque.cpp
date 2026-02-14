@@ -2,6 +2,7 @@
 
 #include<deque>
 #include<iostream>
+#include<algorithm>
 using namespace std;
 
 void printfDeque(const deque<int>& d)
@@ -60,6 +61,33 @@ void test1()
 	//printfDeque(d7);
 	d7.resize(15,2);
 	printfDeque(d7);
+
+	d7.insert(d7.begin(), 1000);
+	printfDeque(d7);
+
+	d7.push_front(20);
+	d7.push_back(30);
+	printfDeque(d7);
+
+	d7.erase(d7.begin());
+	printfDeque(d7);
+
+	deque<int>::iterator it = d7.begin();
+	it++;
+	d7.erase(it);
+	printfDeque(d7);
+	cout << d7.front() << endl;
+	cout << d7.back() << endl;
+	deque<int> d8;
+	d8.push_front(89);
+	d8.push_front(56);
+	d8.push_front(14);
+	d8.push_front(17);
+	d8.push_front(5);
+	sort(d8.begin(), d8.end());
+
+	printfDeque(d8);
+
 
 
 }
